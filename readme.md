@@ -24,6 +24,7 @@ A RESTful API built with Django and Django REST Framework that enables task mana
 - Python 3.8 or higher
 - pip (Python package manager)
 - virtualenv (recommended)
+- Postman (for API testing)
 
 ### Installation
 
@@ -65,6 +66,48 @@ A RESTful API built with Django and Django REST Framework that enables task mana
    ```bash
    python manage.py runserver
    ```
+
+### Testing API Endpoints
+
+#### Create a Task
+
+1. Set up a new POST request to `http://localhost:8000/api/tasks/create/`
+2. Go to the "Body" tab, select "raw" and choose "JSON" from the dropdown
+3. Enter the task data:
+   ```json
+   {
+       "name": "Update documentation",
+       "description": "Update API documentation for the project",
+       "task_type": "WORK",
+       "status": "PENDING"
+   }
+   ```
+4. Click "Send" to create the task
+
+![Postman Create Task](https://i.postimg.cc/q7c3qBwz/postman-create-task.png)
+
+#### Assign a Task to Users
+
+1. Create a new POST request to `http://localhost:8000/api/tasks/assign/`
+2. Go to the "Body" tab, select "raw" and choose "JSON" from the dropdown
+3. Enter the assignment data:
+   ```json
+   {
+       "task_id": 1,
+       "user_ids": [1, 2]
+   }
+   ```
+4. Click "Send" to assign the task
+
+![Postman Assign Task](https://i.postimg.cc/3wbJkwGX/postman-assign-task.png)
+
+#### Get Tasks for a User
+
+1. Create a new GET request to `http://localhost:8000/api/users/1/tasks/`
+2. Make sure your authentication is set up as described above
+3. Click "Send" to retrieve the tasks assigned to user with ID 1
+
+![Postman Get User Tasks](https://i.postimg.cc/9FnLZ5h5/postman-get-user-tasks.png)
 
 ## Sample API Requests and Responses
 
@@ -192,7 +235,7 @@ After setting up the project and creating a superuser, you can use those credent
 
 3. Run with Gunicorn:
    ```bash
-   gunicorn task_management.wsgi:application --bind 0.0.0.0:8000
+   gunicorn core.wsgi:application --bind 0.0.0.0:8000
    ```
 
 4. Set up a reverse proxy like Nginx to serve the application.
@@ -205,6 +248,7 @@ Create a `requirements.txt` file with the following dependencies:
 django==4.2.7
 djangorestframework==3.14.0
 python-dotenv==1.0.0
+django-cors-headers==4.3.0
 gunicorn==21.2.0
 ```
 
