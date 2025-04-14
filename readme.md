@@ -69,6 +69,12 @@ A RESTful API built with Django and Django REST Framework that enables task mana
 
 ### Testing API Endpoints
 
+#### Basic Authentication
+1. In Postman, go to authentication while adding request and choose "Basic Auth"
+2. Username and Password will be same as you mentioned in while running superuser command.
+
+![Postman Basic Authentication](assets/basic_authentication.png)
+
 #### Create a Task
 
 1. Set up a new POST request to `http://localhost:8000/api/tasks/create/`
@@ -84,7 +90,7 @@ A RESTful API built with Django and Django REST Framework that enables task mana
    ```
 4. Click "Send" to create the task
 
-![Postman Create Task](https://i.postimg.cc/q7c3qBwz/postman-create-task.png)
+![Postman Create Task](assets/create_task.png)
 
 #### Assign a Task to Users
 
@@ -99,7 +105,7 @@ A RESTful API built with Django and Django REST Framework that enables task mana
    ```
 4. Click "Send" to assign the task
 
-![Postman Assign Task](https://i.postimg.cc/3wbJkwGX/postman-assign-task.png)
+![Postman Assign Task](assets/assign_task.png)
 
 #### Get Tasks for a User
 
@@ -107,7 +113,7 @@ A RESTful API built with Django and Django REST Framework that enables task mana
 2. Make sure your authentication is set up as described above
 3. Click "Send" to retrieve the tasks assigned to user with ID 1
 
-![Postman Get User Tasks](https://i.postimg.cc/9FnLZ5h5/postman-get-user-tasks.png)
+![Postman Get User Tasks](assets/fetch_user_tasks.png)
 
 ## Sample API Requests and Responses
 
